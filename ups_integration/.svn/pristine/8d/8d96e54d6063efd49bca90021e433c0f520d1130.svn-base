@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-	<data>
-                <menuitem id="menu_ups_setting" name="UPS Settings" parent="base_module_shipping.menu_shipping_service" action="shipping_ups_action" />
-                
-       </data>
-</openerp>
