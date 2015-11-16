@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="shipping_ups_form" model="ir.ui.view">
+            <field name="name">shipping.ups.form</field>
+            <field name="model">shipping.ups</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="UPS Settings">
+                            <group colspan="2" col="2" style="width:70%">
+                                <separator string="General Information" colspan="2" />
+                                <field name="name"/>
+                                <field name="access_license_no" />
+                                <field name="user_id" />
+                                <field name="password" />
+                                <field name="shipper_no" />
+                                <field name="payment_method" required = "1"/>
+                                <field name="credit_card_type" attrs="{'invisible':['|',('payment_method','=','account_number'),('payment_method','=',False)], 'required': [('payment_method', '=', 'credit_card')]}"/>
+                                <field name="credit_card_number" attrs="{'invisible':['|',('payment_method','=','account_number'),('payment_method','=',False)], 'required': [('payment_method', '=', 'credit_card')]}"/>
+                                <field name="card_expiration" attrs="{'invisible':['|',('payment_method','=','account_number'),('payment_method','=',False)], 'required': [('payment_method', '=', 'credit_card')]}"/>
+                                <field name="measurement_ups" required = "1"/>
+                            </group>
+
+                            <group colspan="2" col="2" style="width:70%">
+                                <separator string="Shipping Address" colspan="2" />
+                                <field name="config_shipping_address_id" required = "1"/>
+                            </group>
+                            
+                            <group colspan="4" col="2">
+                                <group>
+                                    <separator string="Production/Test" colspan="2" />
+                                    <field name="test"/>
+                                </group>
+                                <group>
+                                    <separator string="Active" colspan="2" />
+                                    <field name="active"/>
+                                </group>
+                            </group>
+                            
+                            
+                            
+
+                </form>
+            </field>
+        </record>
+
+        <record id="shipping_ups_tree" model="ir.ui.view">
+            <field name="name">shipping.ups.tree</field>
+            <field name="model">shipping.ups</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="UPS Settings">
+                    <field name="name" />
+                    <field name="access_license_no" />
+                    <field name="user_id" />
+                    <field name="password" />
+                    <field name="shipper_no" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="shipping_ups_action" model="ir.actions.act_window">
+            <field name="name">UPS Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipping.ups</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="shipping_ups_tree"/>
+            <field name="help">Key in account details which you get from UPS website.</field>
+        </record>
+
+        
+    </data>
+</openerp>

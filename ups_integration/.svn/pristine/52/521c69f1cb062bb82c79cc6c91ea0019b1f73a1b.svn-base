@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_picking_out_ups" model="ir.ui.view">
+            <field name="name">view.picking.out.ups</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base_module_shipping.view_picking_out_form_inherit1" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='Dimension']" position="after">
+                        <group colspan="4" col="4" name="ups" attrs="{'invisible':[('shipping_type','!=','UPS'), ('shipping_type','!=','All')]}" >
+                            <separator string = "UPS" />
+                            <group colspan="4" col="4" >
+                                <field name="pickup_type_ups" attrs="{'required':[('shipping_type','=','UPS')]}" />
+                                <field name="service_type_ups" attrs="{'required':[('shipping_type','=','UPS')]}" />
+                                <field name="packaging_type_ups" attrs="{'required':[('shipping_type','=','UPS')]}" />
+                            </group>
+                        </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
