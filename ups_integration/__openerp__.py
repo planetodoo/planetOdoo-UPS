@@ -33,7 +33,7 @@
         'static/src/css/rotate_label.css',
         ],
     "demo" : [],
-	"price": "250",
+	"price": "150",
     "currency": "EUR",
     "data": [
         "security/ir.model.access.csv",
